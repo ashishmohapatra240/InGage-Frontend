@@ -1,0 +1,37 @@
+.landing-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 32px;
+    padding: 50px;
+    box-sizing: border-box;
+    min-height: 100vh;
+}
+
+/* Ensures the form and hero image take equal space */
+.landing-container > * {
+  flex: 1;
+}
+
+@media (max-width: 1024px) {
+    .landing-container {
+        padding: 30px;
+        gap: 24px;
+    }
+    /* Adjusting the gap and ensuring the children fit better */
+    .landing-container > * {
+        flex-basis: 45%; /* Giving a bit more room for each child */
+    }
+}
+
+@media (max-width: 768px) {
+    .landing-container {
+        flex-direction: column;
+        padding: 20px;
+        gap: 16px;
+    }
+    /* On small screens, each child takes full width */
+    .landing-container > * {
+        flex-basis: 100%;
+    }
+}
