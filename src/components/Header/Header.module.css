@@ -1,0 +1,50 @@
+/* Header.module.css */
+.headerContainer {
+    width: 1440px;
+    height: 80px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.headerContent {
+    width: 1280px;
+    padding: 0 32px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.logo {
+    width: 108.19px;
+    height: 31.78px;
+}
+
+.navigation {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    gap: 32px;
+}
+
+.navLink {
+    color: #272727;
+    font-size: 16px;
+    font-family: 'Gilroy', sans-serif;
+    font-weight: 400;
+    line-height: 24px;
+    text-decoration: none;
+}
+
+.contactButton {
+    padding: 10px 18px;
+    background-color: #FF006B;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    font-size: 16px;
+    font-family: 'Gilroy', sans-serif;
+    font-weight: 700;
+    line-height: 24px;
+    cursor: pointer;
+}

@@ -1,5 +1,5 @@
 :root {
-  /* Define CSS variables for global style consistency */
+
   --background-color: #F4F6F9;
   --border-color: #EDEDED;
   --primary-text-color: #09101D;
@@ -18,24 +18,25 @@
   box-shadow: 0 24px 64px rgba(50, 50, 50, 0.10);
   display: flex;
   flex-direction: column;
-  align-items: stretch; /* Changed from flex-start to stretch */
+  align-items: stretch;
   justify-content: space-between;
-  padding: 54px 48px;
-  width: 732px;
-  min-height: 662.49px;
+  padding: 32px;
+  width: 100%;
+  max-width: 732px;
+  min-height: 400px;
 }
 
 .section {
   display: flex;
   flex-direction: column;
-  align-items: stretch; /* Changed from flex-start to stretch */
+  align-items: stretch;
   width: 100%;
 }
 
 .titleContainer {
   display: flex;
   align-items: center;
-  margin-bottom: 8px;
+  margin-bottom: 4px;
 }
 
 .title {
@@ -55,15 +56,15 @@
 }
 
 .inputContainer {
-  width: 100%; /* Ensure this container allows children to fill space */
-  margin-bottom: 16px;
+  width: 100%;
+  margin-bottom: 8px;
 }
 
 .inputText,
 .textareaText {
   width: 100%;
   padding: var(--padding-md);
-  box-sizing: border-box; /* Ensures padding is included in the width */
+  box-sizing: border-box;
   background: var(--background-color);
   border-radius: var(--border-radius-sm);
   border: 1.37px solid var(--border-color);
@@ -86,10 +87,11 @@
 
 .buttonContainer {
   display: flex;
-  width: 100%; /* Ensuring full width */
+  width: 100%;
   justify-content: space-between;
   align-items: center;
-  margin-top: 24px;
+  margin-top: 16px;
+  gap: 8px;
 }
 
 .button {
@@ -106,12 +108,14 @@
 }
 
 .submitButton {
+  flex-grow: 2;
   background: var(--primary-button-color);
   color: white;
-  margin-right: 16px;
+  margin-right: 8px;
 }
 
 .connectButton {
+  flex-grow: 1;
   background: transparent;
   color: var(--primary-button-color);
   border: 1px solid var(--primary-button-color);
@@ -124,8 +128,7 @@
 
 @media (max-width: 768px) {
   .formContainer {
-    width: auto;
-    padding: 32px;
+    padding: 24px;
   }
 
   .buttonContainer {
