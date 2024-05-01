@@ -1,18 +1,26 @@
-// Header.js
-import React from "react";
+import React, { useState } from "react";
 import styles from "./Header.module.css";
 import logo from "../../assets/images/Logo.png";
 
 const Header = () => {
+  const [isNavVisible, setIsNavVisible] = useState(false);
+
+  const toggleNav = () => {
+    setIsNavVisible(!isNavVisible);
+  };
+
   return (
-    <div className={styles.headerContainer}>
+    <header className={styles.headerContainer}>
       <div className={styles.headerContent}>
-        <img
-          className={styles.logo}
-          src={logo}
-          alt="Logo"
-        />
-        <nav className={styles.navigation}>
+        <img src={logo} alt="Logo" className={styles.logo} />
+        <div className={styles.menuIcon} onClick={toggleNav}>
+          ☰
+        </div>
+        <nav
+          className={`${styles.navigation} ${
+            isNavVisible ? styles.showNav : ""
+          }`}
+        >
           <a href="/" className={styles.navLink}>
             Home
           </a>
@@ -28,7 +36,7 @@ const Header = () => {
         </nav>
         <button className={styles.contactButton}>Contact Us</button>
       </div>
-    </div>
+    </header>
   );
 };
 

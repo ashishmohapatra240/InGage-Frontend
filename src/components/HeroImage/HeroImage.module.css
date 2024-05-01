@@ -1,0 +1,39 @@
+.heroContainer {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    padding: 20px;
+    box-sizing: border-box;
+    background: #f0f0f0;
+}
+
+.heroImage {
+    width: 100%;
+    height: auto;
+    max-width: 800px;
+    object-fit: contain;
+}
+
+@media (max-width: 1024px) {
+    .heroImage {
+        max-width: 90%;
+    }
+}
+
+@media (max-width: 768px) {
+    .heroContainer {
+        padding: 10px;
+    }
+
+    .heroImage {
+        max-width: 100%;
+    }
+}
+
+@media (max-width: 480px) {
+    .heroImage {
+        max-height: 400px;
+    }
+}
