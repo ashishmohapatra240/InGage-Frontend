@@ -21,9 +21,32 @@ const InputField = ({ label, type, name, value, onChange, placeholder }) => (
   </div>
 );
 
+const DropdownField = ({ label, name, value, onChange, options }) => (
+  <div className={styles.section}>
+    <div className={styles.titleContainer}>
+      <span className={styles.title}>{label}</span>
+      <span className={styles.asterisk}>*</span>
+    </div>
+    <div className={styles.inputContainer}>
+      <select
+        name={name}
+        value={value}
+        onChange={onChange}
+        className={styles.inputText}
+      >
+        {options.map((option) => (
+          <option key={option.value} value={option.value}>
+            {option.label}
+          </option>
+        ))}
+      </select>
+    </div>
+  </div>
+);
+
 const Form = () => {
   const [formData, setFormData] = useState({
-    influencerStatus: "",
+    userType: "",
     socialMediaPresence: "",
     followerCount: "",
     collaborationInterest: "",
@@ -54,62 +77,64 @@ const Form = () => {
       });
   };
 
+  const userTypeOptions = [
+    { value: "", label: "Select Type" },
+    { value: "influencer", label: "Influencer" },
+    { value: "brand", label: "Brand" },
+  ];
+
   return (
     <div className={styles.formContainer}>
-      <form onSubmit={handleSubmit}>
+      <form onSubmit={handleSubmit} className={styles.form}>
+        <DropdownField
+          label="User Type"
+          name="userType"
+          value={formData.userType}
+          onChange={handleChange}
+          options={userTypeOptions}
+        />
+        {formData.userType && (
+          <InputField
+            label={
+              formData.userType === "brand"
+                ? "Link to Website"
+                : "Link to Social Media Account"
+            }
+            type="url"
+            name="socialMediaPresence"
+            value={formData.socialMediaPresence}
+            onChange={handleChange}
+            placeholder={
+              formData.userType === "brand"
+                ? "Your website URL"
+                : "Your primary social media URL"
+            }
+          />
+        )}
+        {formData.userType === "influencer" && (
+          <InputField
+            label="Follower/Subscriber Count"
+            type="number"
+            name="followerCount"
+            value={formData.followerCount}
+            onChange={handleChange}
+            placeholder="Enter an approximate number"
+          />
+        )}
         <InputField
-          label="Are you an influencer?"
+          label="Interest in Collaboration"
           type="text"
-          name="influencerStatus"
-          value={formData.influencerStatus}
+          name="collaborationInterest"
+          value={formData.collaborationInterest}
           onChange={handleChange}
-          placeholder="Yes or No"
+          placeholder="What do you seek in collaborations?"
         />
-        <InputField
-          label="Social Media Presence"
-          type="text" // Changed from "email" to "text"
-          name="socialMediaPresence"
-          value={formData.socialMediaPresence}
-          onChange={handleChange}
-          placeholder="Your primary social media platform"
-        />
-        <InputField
-          label="Follower Count"
-          type="tel"
-          name="followerCount"
-          value={formData.followerCount}
-          onChange={handleChange}
-          placeholder="Approximate number of followers"
-        />
-        {/* Collaboration Interest Field */}
-        <div className={styles.section}>
-          <div className={styles.titleContainer}>
-            <span className={styles.title}>Interest in Collaboration</span>
-            <span className={styles.asterisk}>*</span>
-          </div>
-          <div className={styles.inputContainer}>
-            <textarea
-              name="collaborationInterest"
-              value={formData.collaborationInterest}
-              onChange={handleChange}
-              className={styles.inputText}
-              placeholder="Describe your interest in collaborations"
-            />
-          </div>
-        </div>
-        {/* Buttons */}
         <div className={styles.buttonContainer}>
           <button
             type="submit"
             className={`${styles.button} ${styles.submitButton}`}
           >
             Submit
-          </button>
-          <button
-            type="button"
-            className={`${styles.button} ${styles.connectButton}`}
-          >
-            Connect Now
           </button>
         </div>
       </form>

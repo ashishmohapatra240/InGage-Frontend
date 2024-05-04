@@ -5,31 +5,38 @@
   --primary-button-color: #FF006B;
   --error-color: #DA1414;
   --font-family-base: 'Gilroy', sans-serif;
-  --padding-md: 16px 22px;
+  --padding-md: 16px;
   --border-radius-sm: 10px;
   --border-radius-md: 20px;
 }
 
 .formContainer {
-  background: white;
+  background: var(--background-color);
   border-radius: var(--border-radius-md);
   border: 2px solid var(--border-color);
   box-shadow: 0 24px 64px rgba(50, 50, 50, 0.10);
   display: flex;
   flex-direction: column;
-  align-items: stretch;
-  justify-content: space-between;
+  align-items: center;
   padding: var(--padding-md);
   width: 100%;
   max-width: 732px;
   min-height: 400px;
+  box-sizing: border-box; /* Ensures padding and borders are included in width */
+}
+
+.form {
+  width: 100%; /* This ensures the form uses all the horizontal space of its container */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 .section {
   display: flex;
   flex-direction: column;
-  align-items: stretch;
-  width: 100%;
+  width: 100%; /* Ensuring full width use */
+  margin-bottom: 16px;
 }
 
 .titleContainer {
@@ -56,22 +63,20 @@
 
 .inputContainer {
   width: 100%;
-  margin-bottom: 8px;
 }
 
 .inputText,
 .textareaText {
   width: 100%;
   padding: var(--padding-md);
-  box-sizing: border-box;
-  background: var(--background-color);
+  background: white;
   border-radius: var(--border-radius-sm);
   border: 1.37px solid var(--border-color);
   font-size: 18px;
   font-family: var(--font-family-base);
-  font-weight: 400;
-  color: #000;
+  color: var(--primary-text-color);
   outline: none;
+  box-sizing: border-box; /* Includes padding and border in the element's total width */
 }
 
 .inputText::placeholder,
@@ -81,7 +86,7 @@
 
 .textareaText {
   resize: vertical;
-  min-height: 66px;
+  min-height: 120px;
 }
 
 .buttonContainer {
@@ -90,14 +95,11 @@
   justify-content: space-between;
   align-items: center;
   margin-top: 16px;
-  gap: 8px;
 }
 
 .button {
-  flex: 1;
-  text-align: center;
   padding: 12px 24px;
-  border-radius: 8px;
+  border-radius: var(--border-radius-sm);
   font-size: 16px;
   font-family: var(--font-family-base);
   font-weight: 700;
@@ -107,14 +109,11 @@
 }
 
 .submitButton {
-  flex-grow: 2;
-  background: var(--primary-button-color);
+  background-color: var(--primary-button-color);
   color: white;
-  margin-right: 8px;
 }
 
 .connectButton {
-  flex-grow: 1;
   background: transparent;
   color: var(--primary-button-color);
   border: 1px solid var(--primary-button-color);
@@ -126,12 +125,7 @@
 }
 
 @media (max-width: 1024px) {
-
-  .title,
-  .asterisk,
-  .inputText,
-  .textareaText,
-  .button {
+  .title, .asterisk, .inputText, .textareaText, .button {
     font-size: 16px;
   }
 }
@@ -146,20 +140,13 @@
     gap: 16px;
   }
 
-  .submitButton,
-  .connectButton {
-    width: 100%;
-    margin-top: 8px;
+  .submitButton, .connectButton {
+    width: 100%; /* Ensures buttons use all the horizontal space */
   }
 }
 
 @media (max-width: 480px) {
-
-  .title,
-  .asterisk,
-  .inputText,
-  .textareaText,
-  .button {
+  .title, .asterisk, .inputText, .textareaText, .button {
     font-size: 14px;
   }
 
