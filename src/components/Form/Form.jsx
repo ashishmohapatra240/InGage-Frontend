@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import styles from "./Form.module.css";
+import { useNavigate } from "react-router-dom";
 
 const InputField = ({ label, type, name, value, onChange, placeholder }) => (
   <div className={styles.section}>
@@ -57,24 +58,29 @@ const Form = () => {
     setFormData((prev) => ({ ...prev, [name]: value }));
   };
 
+  const navigate = useNavigate();
   const handleSubmit = (event) => {
     event.preventDefault();
-    fetch("http://localhost:3001/form/submit", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify(formData),
-    })
-      .then((response) => response.json())
-      .then((data) => {
-        console.log("Response data:", data);
-        alert(JSON.stringify(data, null, 2));
-      })
-      .catch((error) => {
-        console.error("Error:", error);
-        alert("Failed to send data: " + error.message);
-      });
+    localStorage.setItem("formData", JSON.stringify(formData));
+    navigate("/dashboard");
+    // fetch("http://localhost:3001/form/submit", {
+    //   method: "POST",
+    //   headers: {
+    //     "Content-Type": "application/json",
+    //   },
+    //   body: JSON.stringify(formData),
+    // })
+    //   .then((response) => response.json())
+    //   .then((data) => {
+    //     console.log("Response data:", data);
+    //     alert(JSON.stringify(data, null, 2));
+    //   })
+    //   .catch((error) => {
+    //     console.error("Error:", error);
+    //     alert("Failed to send data: " + error.message);
+    //   });
+
+      
   };
 
   const userTypeOptions = [
